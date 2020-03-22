@@ -66,6 +66,11 @@ export class AngularFittextDirective implements AfterViewInit, OnInit, OnChanges
     if (changes['compression'] && !changes['compression'].firstChange) {
       this.setFontSize();
     }
+
+    if ((changes['minFontSize'] && !changes['minFontSize'].firstChange) || (changes['maxFontSize'] && !changes['maxFontSize'].firstChange)) {
+      this.setFontSize(0);
+    }
+
     if (changes['ngModel']) {
       this.fittextElement.innerHTML = this.ngModel;
       this.setFontSize();
